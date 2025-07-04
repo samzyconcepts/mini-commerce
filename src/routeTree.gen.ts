@@ -14,7 +14,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CheckoutIndexRouteImport } from './routes/checkout/index'
 import { Route as CartIndexRouteImport } from './routes/cart/index'
 import { Route as ProductSlugRouteImport } from './routes/product/$slug'
-import { Route as CheckoutSuccessIdRouteImport } from './routes/checkout/success.$id'
+import { Route as CheckoutSuccessRouteImport } from './routes/checkout/success'
 
 const SplatRoute = SplatRouteImport.update({
   id: '/$',
@@ -41,71 +41,71 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
   path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CheckoutSuccessIdRoute = CheckoutSuccessIdRouteImport.update({
-  id: '/checkout/success/$id',
-  path: '/checkout/success/$id',
+const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
+  id: '/checkout/success',
+  path: '/checkout/success',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
   '/product/$slug': typeof ProductSlugRoute
   '/cart': typeof CartIndexRoute
   '/checkout': typeof CheckoutIndexRoute
-  '/checkout/success/$id': typeof CheckoutSuccessIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
   '/product/$slug': typeof ProductSlugRoute
   '/cart': typeof CartIndexRoute
   '/checkout': typeof CheckoutIndexRoute
-  '/checkout/success/$id': typeof CheckoutSuccessIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
   '/product/$slug': typeof ProductSlugRoute
   '/cart/': typeof CartIndexRoute
   '/checkout/': typeof CheckoutIndexRoute
-  '/checkout/success/$id': typeof CheckoutSuccessIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/$'
+    | '/checkout/success'
     | '/product/$slug'
     | '/cart'
     | '/checkout'
-    | '/checkout/success/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/$'
+    | '/checkout/success'
     | '/product/$slug'
     | '/cart'
     | '/checkout'
-    | '/checkout/success/$id'
   id:
     | '__root__'
     | '/'
     | '/$'
+    | '/checkout/success'
     | '/product/$slug'
     | '/cart/'
     | '/checkout/'
-    | '/checkout/success/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  CheckoutSuccessRoute: typeof CheckoutSuccessRoute
   ProductSlugRoute: typeof ProductSlugRoute
   CartIndexRoute: typeof CartIndexRoute
   CheckoutIndexRoute: typeof CheckoutIndexRoute
-  CheckoutSuccessIdRoute: typeof CheckoutSuccessIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -145,11 +145,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/checkout/success/$id': {
-      id: '/checkout/success/$id'
-      path: '/checkout/success/$id'
-      fullPath: '/checkout/success/$id'
-      preLoaderRoute: typeof CheckoutSuccessIdRouteImport
+    '/checkout/success': {
+      id: '/checkout/success'
+      path: '/checkout/success'
+      fullPath: '/checkout/success'
+      preLoaderRoute: typeof CheckoutSuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -158,10 +158,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  CheckoutSuccessRoute: CheckoutSuccessRoute,
   ProductSlugRoute: ProductSlugRoute,
   CartIndexRoute: CartIndexRoute,
   CheckoutIndexRoute: CheckoutIndexRoute,
-  CheckoutSuccessIdRoute: CheckoutSuccessIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
