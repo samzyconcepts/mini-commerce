@@ -13,7 +13,7 @@ const initializeProducts = async (): Promise<Product[]> => {
 
     // Fetch from JSON file and seed localStorage
     try {
-        const response = await fetch(BASE_URL);
+        const response = await fetch("/products.json");
 
         if (!response.ok) {
             throw new Error("Failed to fetch products");
