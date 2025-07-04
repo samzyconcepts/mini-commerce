@@ -2,7 +2,7 @@ import type { Product } from "@/api/types";
 
 const STORAGE_KEY = "mini-commerce-products";
 
-// const BASE_URL = "http://localhost:5000/products";
+const BASE_URL = "http://localhost:5000/products";
 
 // Initialize localStorage with product data if empty
 const initializeProducts = async (): Promise<Product[]> => {
@@ -14,7 +14,7 @@ const initializeProducts = async (): Promise<Product[]> => {
 
     // Fetch from JSON file and seed localStorage
     try {
-        const response = await fetch("/products.json");
+        const response = await fetch(BASE_URL);
 
         if (!response.ok) {
             throw new Error("Failed to fetch products");
