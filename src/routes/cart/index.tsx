@@ -41,13 +41,14 @@ function RouteComponent() {
                         <Card key={item.product.id}>
                             <CardContent className="p-6">
                                 <div className="flex items-center space-x-4">
-                                    <Link to={`/product/${item.product.slug}`}>
+                                    <Link to="/product/$slug" params={{ slug: item.product.slug }}>
                                         <img src={item.product.image} alt={item.product.name} className="w-20 h-20 object-cover rounded-lg" />
                                     </Link>
 
                                     <div className="flex-1 min-w-0">
                                         <Link
-                                            to={`/product/${item.product.slug}`}
+                                            to="/product/$slug"
+                                            params={{ slug: item.product.slug }}
                                             className="text-lg font-semibold hover:text-primary transition-colors">
                                             {item.product.name}
                                         </Link>

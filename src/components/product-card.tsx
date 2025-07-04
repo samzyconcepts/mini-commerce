@@ -26,7 +26,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
     return (
         <Card className="group overflow-hidden transition-all duration-300 hover:shadow-glow hover:-translate-y-1">
-            <Link to={`/product/${product.slug}`}>
+            <Link to="/product/$slug" params={{ slug: product.slug }}>
                 <div className="relative overflow-hidden">
                     <img
                         src={product.image}
@@ -47,7 +47,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </Link>
 
             <CardContent className="p-4">
-                <Link to={`/product/${product.slug}`}>
+                <Link to="/product/$slug" params={{ slug: product.slug }}>
                     <div className="space-y-2">
                         <div className="flex items-center justify-between">
                             <Badge variant="outline" className="text-xs">

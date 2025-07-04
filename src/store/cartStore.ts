@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { CartStore, Product, CartItem } from "@/api/types";
+import type { CartStore, Product } from "@/api/types";
 
 const TAX_RATE = 0.08; // 8% tax rate
 
